@@ -22,4 +22,4 @@
 * Create React App
 * Хуки
 
-[Ссылка на GitHub Pages](https://kavtsure.github.io/mesto/)
+[Ссылка на GitHub Pages](https://kavtsure.github.io/mesto-react/)
