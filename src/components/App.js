@@ -1,20 +1,18 @@
 import React from 'react';
+import { useState } from 'react';
 import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
 import PopupWithForm from './PopupWithForm.js';
 import ImagePopup from './ImagePopup.js';
 
-
-
 function App() {
 
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({});
-  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({});
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true)
@@ -42,7 +40,6 @@ function App() {
   }
 
   return (
-
     <div className="base">
       <Header />
       <Main
@@ -52,7 +49,6 @@ function App() {
         onCardClick={handleCardClick}
       />
       <Footer />
-
 
       <PopupWithForm
         name="profile-edit"
@@ -81,7 +77,6 @@ function App() {
         <span className="popup__field-error popup__field-error_visible" id="profile__description-error"></span>
       </PopupWithForm>
 
-
       <PopupWithForm
         name="element-edit"
         title="Новое место"
@@ -107,7 +102,6 @@ function App() {
         <span className="popup__field-error popup__field-error_visible" id="image-link-error"></span>
       </PopupWithForm>
 
-
       <PopupWithForm
         name="avatar-edit"
         title="Обновить аватар"
@@ -124,7 +118,6 @@ function App() {
         <span className="popup__field-error popup__field-error_visible" id="avatar-link-error"></span>
       </PopupWithForm>
 
-
       <PopupWithForm
         name="confirmation"
         title="Вы уверены?"
@@ -138,7 +131,6 @@ function App() {
         card={selectedCard}
         isOpen={isImagePopupOpen}
       />
-
     </div>
   );
 }

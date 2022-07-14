@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function Card({ card, onCardClick }) {
 
     function handleClick() {
@@ -20,7 +19,6 @@ function Card({ card, onCardClick }) {
             </div>
         </li>
     )
-
 }
 
 export default Card;
