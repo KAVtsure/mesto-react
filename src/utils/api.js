@@ -43,13 +43,13 @@ class Api {
             .then(this._checkResponse);
     }
 
-    saveUserInfo(userName, userDescription) {
+    saveUserInfo({ name, about }) {
         return fetch(this._urlUser, {
             headers: this._headers,
             method: 'PATCH',
             body: JSON.stringify({
-                name: userName,
-                about: userDescription
+                name: name,
+                about: about
             })
         })
             .then(this._checkResponse);
@@ -71,12 +71,20 @@ class Api {
             .then(this._checkResponse);
     }
 
+    changeLikeCardStatus(cardId, isLiked) {
+        return fetch(`${this._urlCards}/${cardId}/likes`, {
+            headers: this._headers,
+            method: `${!isLiked ? 'DELETE' : 'PUT'}`,
+        })
+            .then(this._checkResponse);
+    }
+
     updateAvatar(link) {
         return fetch(`${this._urlUser}/avatar`, {
             headers: this._headers,
             method: 'PATCH',
             body: JSON.stringify({
-                avatar: link
+                avatar: link,
             })
         })
             .then(this._checkResponse);
