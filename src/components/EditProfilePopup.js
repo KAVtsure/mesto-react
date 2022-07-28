@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect, useContext } from 'react';
 import PopupWithForm from './PopupWithForm.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
@@ -14,7 +13,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     useEffect(() => {
         setName(currentUser.name);
         setDescription(currentUser.about);
-    }, [currentUser]);
+    }, [currentUser, isOpen]);
 
     function handleChangeName(e) {
         setName(e.target.value);
@@ -27,13 +26,13 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     function handleSubmit(e) {
         // Запрещаем браузеру переходить по адресу формы
         e.preventDefault();
-      
+
         // Передаём значения управляемых компонентов во внешний обработчик
         onUpdateUser({
-          name,
-          about: description,
+            name,
+            about: description,
         });
-      }
+    }
 
     return (
         <PopupWithForm
@@ -52,7 +51,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
                 required
                 minLength="2"
                 maxLength="40"
-                value={name}
+                value={name || ''}
                 onChange={handleChangeName} />
             <span className="popup__field-error popup__field-error_visible" id="profile_name-error"></span>
             <input type="text"
@@ -63,7 +62,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
                 required
                 minLength="2"
                 maxLength="200"
-                value={description}
+                value={description || ''}
                 onChange={handleChangeDescription} />
             <span className="popup__field-error popup__field-error_visible" id="profile__description-error"></span>
         </PopupWithForm>

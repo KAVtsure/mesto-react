@@ -1,5 +1,3 @@
-import React from 'react';
-
 function PopupWithForm({ name, title, children, textButton, isOpen, onClose, onSubmit }) {
 
   return (
